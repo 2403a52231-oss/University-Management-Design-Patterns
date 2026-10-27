@@ -28,18 +28,27 @@ class UniversityConfig:
         self.observers = []
         self._initialized = True
 
-    def update(self, **details):
-        allowed = {
-            "university_name", "academic_year",
-            "semester", "working_hours"
-        }
+    
+def update(self, **details):
+    allowed = {
+        "university_name",
+        "academic_year",
+        "semester",
+        "working_hours"
+    }
 
-        for key, value in details.items():
-            if key not in allowed:
-                raise ValueError(f"Invalid configuration: {key}")
-            setattr(self, key, value)
+    # Validate everything before making changes
+    invalid = set(details) - allowed
+    if invalid:
+        raise ValueError(
+            f"Invalid configuration: {', '.join(sorted(invalid))}"
+        )
 
-        self.notify_observers()
+    for key, value in details.items():
+        setattr(self, key, value)
+
+    self.notify_observers()
+
 
     def display(self):
         print("\n--- University Configuration ---")
