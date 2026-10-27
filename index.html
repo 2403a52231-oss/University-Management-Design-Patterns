@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>University Management System</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+header {
+    background: #12346b;
+    color: white;
+    padding: 24px 7%;
+}
+
+header h1 {
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #dbeafe;
+}
+
+nav {
+    background: white;
+    padding: 15px 7%;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+nav a {
+    color: #12346b;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 25px;
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.welcome {
+    margin-bottom: 25px;
+}
+
+.welcome p {
+    color: #64748b;
+    margin-top: 8px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.card, .panel {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 3px 12px #0f172a0a;
+}
+
+.card .icon {
+    font-size: 27px;
+    margin-bottom: 14px;
+}
+
+.card h3 {
+    font-size: 15px;
+    color: #64748b;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 21px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.panel {
+    margin-bottom: 25px;
+}
+
+.panel h2 {
+    color: #12346b;
+    margin-bottom: 20px;
+    font-size: 21px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 7px;
+    font-size: 15px;
+    background: white;
+}
+
+textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+button {
+    border: none;
+    border-radius: 7px;
+    padding: 12px 18px;
+    background: #174ea6;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 18px;
+}
+
+button:hover {
+    background: #12346b;
+}
+
+.secondary {
+    background: #475569;
+    margin-left: 8px;
+}
+
+#status {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #15803d;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    font-size: 14px;
+}
+
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 22px;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px 12px 5px 0;
+    }
+
+    .card, .panel {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🎓 University Management System</h1>
+    <p>University Configuration & Notification Dashboard</p>
+</header>
+
+<nav>
+    <a href="#dashboard">Dashboard</a>
+    <a href="#configuration">Configuration</a>
+    <a href="#notifications">Notifications</a>
+</nav>
+
+<main>
+
+<section class="welcome" id="dashboard">
+    <h2>Welcome, Administrator!</h2>
+    <p>Manage academic information and university announcements.</p>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <div class="icon">🏛️</div>
+        <h3>University</h3>
+        <p id="universityCard">ABC University</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">📅</div>
+        <h3>Academic Year</h3>
+        <p id="yearCard">2026-2027</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">📚</div>
+        <h3>Current Semester</h3>
+        <p id="semesterCard">First Semester</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🕘</div>
+        <h3>Working Hours</h3>
+        <p id="hoursCard">9 AM - 5 PM</p>
+    </div>
+</section>
+
+<section class="panel" id="configuration">
+    <h2>⚙️ University Configuration</h2>
+
+    <form id="configForm">
+        <div class="form-grid">
+            <div>
+                <label for="university">University Name</label>
+                <input id="university" value="ABC University" required>
+            </div>
+
+            <div>
+                <label for="year">Academic Year</label>
+                <input id="year" value="2026-2027" required>
+            </div>
+
+            <div>
+                <label for="semester">Semester</label>
+                <select id="semester">
+                    <option>First Semester</option>
+                    <option>Second Semester</option>
+                    <option>Summer Semester</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="hours">Working Hours</label>
+                <input id="hours" value="9:00 AM - 5:00 PM" required>
+            </div>
+        </div>
+
+        <button type="submit">Save Configuration</button>
+        <button type="button" class="secondary" id="resetConfig">
+            Reset
+        </button>
+        <p id="configStatus" role="status" aria-live="polite"></p>
+    </form>
+</section>
+
+<section class="panel" id="notifications">
+    <h2>🔔 Notification Center</h2>
+
+    <form id="notificationForm">
+        <div class="form-grid">
+            <div>
+                <label for="type">Notification Type</label>
+                <select id="type">
+                    <option value="Email">Email</option>
+                    <option value="SMS">SMS</option>
+                    <option value="Push">Push Notification</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="recipient">Recipient</label>
+                <input id="recipient"
+                       placeholder="Email, phone or device ID"
+                       required>
+            </div>
+
+            <div>
+                <label for="message">Message</label>
+                <textarea id="message"
+                          placeholder="Enter your announcement..."
+                          required></textarea>
+            </div>
+        </div>
+
+        <button type="submit">Send Test Notification</button>
+        <p id="notificationStatus" role="status"
+           aria-live="polite"></p>
+    </form>
+</section>
+
+<section class="panel">
+    <h2>📋 Recent Activity</h2>
+    <div id="activity">
+        <p>No activity yet. Save a configuration or create a test notification.</p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    University Management System | Python Design Patterns Project
+</footer>
+
+<script>
+const defaults = {
+    university: "ABC University",
+    year: "2026-2027",
+    semester: "First Semester",
+    hours: "9:00 AM - 5:00 PM"
+};
+
+const fields = ["university", "year", "semester", "hours"];
+
+function addActivity(text) {
+    const activity = document.getElementById("activity");
+
+    if (activity.querySelector("p")) {
+        activity.innerHTML = "";
+    }
+
+    const item = document.createElement("p");
+    item.textContent = new Date().toLocaleTimeString() + " — " + text;
+    item.style.padding = "10px 0";
+    item.style.borderBottom = "1px solid #e2e8f0";
+    activity.prepend(item);
+}
+
+function renderConfig(config) {
+    document.getElementById("universityCard").textContent =
+        config.university;
+    document.getElementById("yearCard").textContent = config.year;
+    document.getElementById("semesterCard").textContent =
+        config.semester;
+    document.getElementById("hoursCard").textContent = config.hours;
+}
+
+function getConfig() {
+    return {
+        university: document.getElementById("university").value.trim(),
+        year: document.getElementById("year").value.trim(),
+        semester: document.getElementById("semester").value,
+        hours: document.getElementById("hours").value.trim()
+    };
+}
+
+function loadConfig() {
+    let config = defaults;
+
+    try {
+        const saved = localStorage.getItem("universityConfig");
+        if (saved) config = { ...defaults, ...JSON.parse(saved) };
+    } catch (error) {
+        console.warn("Could not load saved configuration.");
+    }
+
+    document.getElementById("university").value = config.university;
+    document.getElementById("year").value = config.year;
+    document.getElementById("semester").value = config.semester;
+    document.getElementById("hours").value = config.hours;
+
+    renderConfig(config);
+}
+
+document.getElementById("configForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const config = getConfig();
+
+    try {
+        localStorage.setItem("universityConfig", JSON.stringify(config));
+    } catch (error) {
+        document.getElementById("configStatus").textContent =
+            "Could not save in this browser. Please check browser storage settings.";
+        return;
+    }
+
+    renderConfig(config);
+    document.getElementById("configStatus").textContent =
+        "Configuration saved successfully in this browser!";
+    addActivity("University configuration updated.");
+});
+
+document.getElementById("resetConfig").addEventListener("click", function() {
+    document.getElementById("configForm").reset();
+
+    try {
+        localStorage.removeItem("universityConfig");
+    } catch (error) {
+        // The defaults can still be restored in the current page.
+    }
+
+    loadConfig();
+    document.getElementById("configStatus").textContent =
+        "Default configuration restored.";
+    addActivity("Configuration reset to defaults.");
+});
+
+document.getElementById("notificationForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const type = document.getElementById("type").value;
+    const recipient = document.getElementById("recipient").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (!recipient || !message) return;
+
+    document.getElementById("notificationStatus").textContent =
+        type + " test notification prepared. No real message was sent.";
+
+    addActivity(type + " notification prepared for " + recipient + ".");
+
+    document.getElementById("message").value = "";
+});
+
+loadConfig();
+</script>
+
+</body>
+</html>
